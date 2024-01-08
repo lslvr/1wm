@@ -12,7 +12,7 @@ int main (int argc, char **argv) {
 
   while (!XNextEvent (d, &e)) {
     if (e.type == KeyPress) {
-      on (KEY, ACTIONS);
+      on ("KEY", ACTIONS);
     }
   }
 }
