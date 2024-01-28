@@ -8,11 +8,10 @@ int main (int argc, char **argv) {
   Display *d = XOpenDisplay(0); Window r = DefaultRootWindow(d); XEvent e;
   XSelectInput (d, r, SubstructureRedirectMask);
 
-  grab ("KEY", MODIFIER);
+  // grab keys here.
 
   while (!XNextEvent (d, &e)) {
-    if (e.type == KeyPress) {
-      on ("KEY", ACTIONS);
-    }
+    if (e.type == KeyPress) ;
+      // define actions here.
   }
 }
