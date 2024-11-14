@@ -4,7 +4,7 @@
 #define stk(s)    XKeysymToKeycode(d, XStringToKeysym(s))
 #define K(k, x)   if (e.xkey.keycode == stk(k)) { x; }
 #define E(_, x)   if (e.type == _) { x; }
-#define gks(...)  const char *l[] = { __VA_ARGS__ }; \
+#define grab(...)  const char *l[] = { __VA_ARGS__ }; \
                     for (size_t i = 0; i < sizeof(l) / sizeof(*l); ++i) \
                       XGrabKey (d, stk(l[i]), Mod4Mask, r, 1, 1, 1);
 
@@ -12,7 +12,7 @@ int main () {
   Display *d = XOpenDisplay(0); Window r = DefaultRootWindow(d); XEvent e;
   XSelectInput (d, r, SubstructureRedirectMask);
 
-  gks ("q", "n", "l", "space", "Return", "Right", "Left", "Up", "Down");
+  grab ("q", "n", "l", "space", "Return", "Right", "Left", "Up", "Down");
 
   while (!XNextEvent (d, &e)) {
     E (KeyPress,
