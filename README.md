@@ -11,6 +11,8 @@ For the true minimalist:
 - Absolutely adabptable to your needs.
 - Includes just what is strictly needed.
 - Not standards compliant (because, honestly, who gives a fuck?).
+- All windows are full-screen, just one is visible at any given time.
+-
 
 `mwm` just loops through X key press events and lets you bind
 actions to key presses. It provides two macros: `grab` and `K`.
