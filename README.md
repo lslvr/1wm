@@ -12,10 +12,8 @@ For the true minimalist:
 - Includes just what is strictly needed.
 - Not standards compliant (because, honestly, who gives a fuck?).
 - All windows are full-screen, just one is visible at any given time.
--
 
-`mwm` just loops through X key press events and lets you bind
-actions to key presses. It provides two macros: `grab` and `K`.
-Read the source for an example on how to use it (my own setup).
+Two macros are available for assigning keybindings: `grab` and `K`.
+Read the source for an example on how to use them (my own setup).
 
 Dead simple.

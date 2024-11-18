@@ -12,26 +12,25 @@ int main () {
   Display *d = XOpenDisplay(0); Window r = DefaultRootWindow(d); XEvent e;
   XSelectInput (d, r, SubstructureRedirectMask);
 
-  grab ("q", "n", "l", "space", "Return", "Right", "Left", "Up", "Down");
+  grab ("n", "q", "w", "t", "l", "u", "i", "o", "p");
 
   while (!XNextEvent (d, &e)) {
     E (KeyPress,
        K("n", XCirculateSubwindowsUp(d, r); XSetInputFocus(d, e.xkey.window, 2, 0))
        K("q", XKillClient(d, e.xkey.subwindow))
-       K("l",      system("rotK &"))
-       K("space",  system("chromium &"))
-       K("Return", system("xterm &"))
-       K("Right",  system("vol 5%+ &"))
-       K("Left",   system("vol 5%- &"))
-       K("Up",     system("bri +100 &"))
-       K("Down",   system("bri -100 &")))
+       K("w", system("chromium --enable-features=WebContentsForceDark &"))
+       K("t", system("xterm &"))
+       K("l", system("rotK"))
+       K("u", system("vol 5%-"))
+       K("i", system("vol 5%+"))
+       K("o", system("bri -100"))
+       K("p", system("bri +100")))
 
-    E (MapRequest,
-      XMapWindow(d, e.xmaprequest.window);
-      XSetInputFocus(d, e.xmaprequest.window, 2, 0))
+    E (MapRequest, XMapWindow(d, e.xmaprequest.window);
+                   XSetInputFocus(d, e.xmaprequest.window, 2, 0))
 
     E (ConfigureRequest,
-      XMoveResizeWindow (d, e.xconfigure.window, 0, 0, e.xconfigure.width, e.xconfigure.height);
-      XMoveResizeWindow (d, e.xconfigure.window, 0, 0, 1920, 1080))
+       XMoveResizeWindow (d, e.xconfigure.window, 0, 0, e.xconfigure.width, e.xconfigure.height);
+       XMoveResizeWindow (d, e.xconfigure.window, 0, 0, 1920, 1080))
   }
 }
