@@ -15,7 +15,7 @@ For the true minimalist:
 - All windows are full-screen, just one is visible at any given time.
 - No modes.
 
-### Why?
+## Why?
 
 Most software today is crappy. Do you really need all that? I found out
 through experience that, generally, you don't. Do you really need to have
@@ -27,7 +27,7 @@ We are in dire need of software that is hackable, fun, small, malleable,
 and that you can wrap your head around, because: is it truly free software
 if, due to its complexity, you cannot modify it? ;)
 
-### How?
+## How?
 
 Two macros are available for assigning keybindings: `grab` and `K`.
 Read the source for an example on how to use them (my own setup).
