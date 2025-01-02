@@ -13,11 +13,11 @@ int main() {
   grab("n", "q", "e");
 
   while (!XNextEvent (d, &e)) {
-    on(ConfigureRequest,  XMoveResizeWindow(d, e.xconfigure.window, 0, 0, e.xconfigure.width, e.xconfigure.height));
-          on(MapRequest,  XMapWindow(d, e.xmaprequest.window);
-                          XSetInputFocus(d, e.xmaprequest.window, 2, 0));
-            on(KeyPress,  map("n", XCirculateSubwindowsUp(d, r); XSetInputFocus(d, e.xkey.window, 2, 0))
-                          map("q", XKillClient(d, e.xkey.subwindow))
-                          map("e", system("dmenu_run &")));
+    on(ConfigureRequest, XMoveResizeWindow(d, e.xconfigure.window, 0, 0, e.xconfigure.width, e.xconfigure.height));
+          on(MapRequest, XMapWindow(d, e.xmaprequest.window);
+                         XSetInputFocus(d, e.xmaprequest.window, 2, 0));
+            on(KeyPress, map("n", XCirculateSubwindowsUp(d, r); XSetInputFocus(d, e.xkey.window, 2, 0))
+                         map("q", XKillClient(d, e.xkey.subwindow))
+                         map("e", system("dmenu_run &")));
   }
 }

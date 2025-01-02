@@ -16,7 +16,7 @@ The window manager for the true minimalist:
 
 This is the smallest, actually usable window manager I know about. Even
 TinyWM is twice as large. However, it doesn't let you launch programs, or
-switch between windows. `mwm` does.
+assign key bindings. `mwm` does.
 
 ---
 
@@ -27,7 +27,7 @@ _`xterm`, with the `micro` editor, editing `mwm`'s source._
 ## Why?
 
 Most software today is crappy. Do you really need all the bells and whistles?
-Generally, you don't. You need to get the job done.
+Probably not.
 
 We are in dire need of software that is hackable, fun, small, malleable, and
 that you can wrap your head around, because: is it truly free software if, due
