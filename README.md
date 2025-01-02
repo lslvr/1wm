@@ -35,6 +35,14 @@ to its complexity, you cannot modify it? ;)
 
 ## How?
 
+The very essential things a window manager should let me do are:
+
+- Launch applications (which might create new windows).
+- Switch between windows.
+- Close windows.
+
+Well, so that's all what `mwm` lets you do.
+
 Two macros are available for assigning keybindings: `grab` and `map`. Read
 `mwm-custom.c` for an example on how to use them (my own setup).
 
@@ -44,5 +52,4 @@ them to actions.
 ## Building.
 
 Run `./build.sh`. Pass `CC=...` to use a different C compiler (I use `tcc`).
-
 Dead simple.
