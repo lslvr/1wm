@@ -1,4 +1,4 @@
-# tswm
+# mwm
 
 The window manager for the true minimalist:
 
@@ -16,11 +16,11 @@ The window manager for the true minimalist:
 
 This is the smallest, actually usable window manager I know about. Even
 TinyWM is twice as large. However, it doesn't let you launch programs, or
-assign key bindings. `tswm` does.
+assign key bindings. `mwm` does.
 
 ---
 
-_`xterm`, with the `micro` editor, editing `tswm`'s source._
+_`xterm`, with the `micro` editor, editing `mwm`'s source._
 
 ![2024-12-27-172602_1920x1080_scrot](https://github.com/user-attachments/assets/a369645f-bb80-40fc-9658-0225583d8741)
 
@@ -41,10 +41,10 @@ The very essential things a window manager should let me do are:
 - Switch between windows.
 - Close windows.
 
-Well, so that's all what `tswm` lets you do.
+Well, so that's all what `mwm` lets you do.
 
 Two macros are available for assigning keybindings: `grab` and `map`. Read
-`tswm-custom.c` for an example on how to use them (my own setup).
+`mwm-custom.c` for an example on how to use them (my own setup).
 
 You first need to `grab` the keys you want to be able to bind. Then you `map`
 them to actions.
