@@ -1,4 +1,4 @@
-# mwm
+# 1wm
 
 The window manager for the true minimalist:
 
@@ -14,26 +14,24 @@ The window manager for the true minimalist:
 - Absolutely adaptable to your needs.
 - Includes just what is strictly needed.
 
-This is the smallest, actually usable window manager I know about. Even
-TinyWM is twice as large. However, it doesn't let you launch programs, or
-assign key bindings. `mwm` does.
+This is the smallest, actually usable window manager I know about. Even `TinyWM` is
+twice as large, but you cannot launch programs or assign key bindings.
 
 ---
 
-_`xterm`, with the `micro` editor, editing `mwm`'s source._
-
 ![2024-12-27-172602_1920x1080_scrot](https://github.com/user-attachments/assets/a369645f-bb80-40fc-9658-0225583d8741)
 
-## Why?
+_`xterm`, with the `micro` editor, editing `1wm`'s source._
 
-Most software today is crappy. Do you really need all the bells and whistles?
+# Why?
+
+Most software today is heavily bloated. Do you _really_ need all the bells and whistles?
 Probably not.
 
-We are in dire need of software that is hackable, fun, small, malleable, and
-that you can wrap your head around, because: is it truly free software if, due
-to its complexity, you cannot modify it? ;)
+We need software that is hackable, fun, small, malleable, and that you can wrap your head
+around, because: is it truly free if, due to its complexity, you cannot modify it? ;)
 
-## How?
+# How?
 
 The very essential things a window manager should let me do are:
 
@@ -41,15 +39,17 @@ The very essential things a window manager should let me do are:
 - Switch between windows.
 - Close windows.
 
-Well, so that's all what `mwm` lets you do.
+Well, that's what `1wm` lets you do:
 
-Two macros are available for assigning keybindings: `grab` and `map`. Read
-`mwm-custom.c` for an example on how to use them (my own setup).
+- Launch `dmenu`: `Mod4 + e`.
+- Cycle to next window (the "`Alt + Tab`" behavior): `Mod4 + n`.
+- Close current window: `Mod4 + q`.
 
-You first need to `grab` the keys you want to be able to bind. Then you `map`
-them to actions.
+You may add more keybindings to your liking; see `1wm-custom.c`.
 
-## Building.
+First, you need to `grab()` the keys you want to bind, then you `map()` them to actions.
+
+# Building.
 
 Run `./build.sh`. Pass `CC=...` to use a different C compiler (I use `tcc`).
 Dead simple.
