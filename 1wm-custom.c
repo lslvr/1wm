@@ -22,8 +22,8 @@ int main() {
                          map("w", system("chromium &"))
                          map("t", system("xterm &"))
                          map("l", system("rotK"))
-                         map("u", system("vol 5%-"))
-                         map("i", system("vol 5%+"))
+                         map("u", system("vol -"))
+                         map("i", system("vol +"))
                          map("o", system("bri -100"))
                          map("p", system("bri +100")))
   }
