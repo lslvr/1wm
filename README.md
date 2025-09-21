@@ -1,55 +1,56 @@
 # 1wm
+> _The smallest, actually usable window manager._
 
-The window manager for the true minimalist:
-
-- 20 LOC.
-- No modes.
-- No "eye-candy".
-- No mouse control.
-- No virtual desktops.
-- No configuration files.
-- Not standards-compliant.
-- No title bars, no status bars, no buttons, no borders, no menus, etc.
-- All windows are full-screen, just one is visible at any given time.
-- Absolutely adaptable to your needs.
-- Includes just what is strictly needed.
-
-This is the smallest, actually usable window manager I know about. Even `TinyWM` is
-twice as large, but you cannot launch programs or assign key bindings.
+- _~20 LOC._
+- _No modes, no mouse control, no virtual desktops, no menus._
+- _No configs, no eye-candy, not standards-compliant._
+- _Only one full-screen window visible at a time._
+- _Depends only on Xlib._
 
 ---
 
-![2024-12-27-172602_1920x1080_scrot](https://github.com/user-attachments/assets/a369645f-bb80-40fc-9658-0225583d8741)
+```C
+#include <X11/Xlib.h>
+#include <stdlib.h>
 
-_`xterm`, with the `micro` editor, editing `1wm`'s source._
+#define stk(s)    XKeysymToKeycode(d, XStringToKeysym(s))
+#define on(_, x)  if (e.type == _) { x; }
+#define map(k, x) if (e.xkey.keycode == stk(k)) { x; }
+#define grab(...) const char *l[] = { __VA_ARGS__, 0 }; \
+                    for (int i = 0; l[i]; i++) XGrabKey(d, stk(l[i]), Mod4Mask, r, 1, 1, 1);
 
-# Why?
+int main() {
+  Display *d = XOpenDisplay(0); Window r = DefaultRootWindow(d); XEvent e;
+  XSelectInput(d, r, SubstructureRedirectMask);
+  grab("n", "q", "e");
 
-Most software today is heavily bloated. Do you _really_ need all the bells and whistles?
-Probably not.
+  while (!XNextEvent (d, &e)) {
+    on(ConfigureRequest, XMoveResizeWindow(d, e.xconfigure.window, 0, 0, e.xconfigure.width, e.xconfigure.height));
+          on(MapRequest, XMapWindow(d, e.xmaprequest.window);
+                         XSetInputFocus(d, e.xmaprequest.window, 2, 0));
+            on(KeyPress, map("n", XCirculateSubwindowsUp(d, r); XSetInputFocus(d, e.xkey.window, 2, 0))
+                         map("q", XKillClient(d, e.xkey.subwindow))
+                         map("e", system("dmenu_run &")));
+  }
+}
+```
+> _Yeah, that's the full source._
 
-We need software that is hackable, fun, small, malleable, and that you can wrap your head
-around, because: is it truly free if, due to its complexity, you cannot modify it? ;)
 
-# How?
+## Why?
+Because software should be small, hackable and fun,
+not a damn technical debt. You can grasp this one
+in <5 minutes.
 
-The very essential things a window manager should let me do are:
+## How?
+The essential things a window manager should let me do are:
 
-- Launch applications (which might create new windows).
-- Switch between windows.
-- Close windows.
+- Launch applications (`dmenu`): `Mod4 + e`.
+- Switch between windows: `Mod4 + n`.
+- Close windows: `Mod4 + q`.
 
-Well, that's what `1wm` lets you do:
+## Building
+`CC=gcc ./build.sh`, or use `tcc` by default: `./build.sh`.
 
-- Launch `dmenu`: `Mod4 + e`.
-- Cycle to next window (the "`Alt + Tab`" behavior): `Mod4 + n`.
-- Close current window: `Mod4 + q`.
-
-You may add more keybindings to your liking; see `1wm-custom.c`.
-
-First, you need to `grab()` the keys you want to bind, then you `map()` them to actions.
-
-# Building.
-
-Run `./build.sh`. Pass `CC=...` to use a different C compiler (I use `tcc`).
-Dead simple.
+## Customizing
+See `1wm-custom.c` for my own setup, adds ~10 LOC.
