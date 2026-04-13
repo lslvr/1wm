@@ -1,3 +1,3 @@
 #! /bin/sh
 
-rm -f 1wm; ${CC:-tcc} -lX11 1wm.c -o 1wm
+rm -f 1wm; ${CC:-tcc} 1wm.c -lX11 -o 1wm
