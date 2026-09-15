@@ -16,7 +16,11 @@ int main() {
     on(ConfigureRequest, XMoveResizeWindow(d, e.xconfigure.window, 0, 0, e.xconfigure.width, e.xconfigure.height));
           on(MapRequest, XMapWindow(d, e.xmaprequest.window);
                          XSetInputFocus(d, e.xmaprequest.window, 2, 0));
-            on(KeyPress, map("n", XCirculateSubwindowsUp(d, r); XSetInputFocus(d, e.xkey.window, 2, 0))
+            on(KeyPress, map("n", Window rt, pr, *c = 0; unsigned n = 0; \
+                                  XCirculateSubwindowsUp(d, r); \
+                                  XQueryTree(d, r, &rt, &pr, &c, &n); \
+                                  if (n) XSetInputFocus(d, c[n - 1], 2, 0); \
+                                  if (c) XFree(c))
                          map("q", XKillClient(d, e.xkey.subwindow))
                          map("e", system("dmenu_run &")));
   }
