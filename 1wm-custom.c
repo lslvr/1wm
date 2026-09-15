@@ -6,7 +6,11 @@
 #define keys(k, _)  XGrabKey(d, stk(k), Mod4Mask, r, 1, 1, 1);
 #define map(k, x)   if (e.xkey.keycode == stk(k)) { x; }
 
-#define TBL(x)  x("n", XCirculateSubwindowsUp(d, r); XSetInputFocus(d, e.xkey.window, 2, 0)) \
+#define TBL(x)  x("n", Window rt; Window pr; Window *c = 0; unsigned n = 0; \
+                       XCirculateSubwindowsUp(d, r); \
+                       XQueryTree(d, r, &rt, &pr, &c, &n); \
+                       if (n) XSetInputFocus(d, c[n-1], 2, 0); \
+                       if (c) XFree(c)) \
                 x("q", XKillClient(d, e.xkey.subwindow)) \
                 x("w", system("vivaldi &")) \
                 x("t", system("xterm &")) \
