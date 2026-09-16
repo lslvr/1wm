@@ -1,13 +1,13 @@
 # 1wm
 > _The smallest, actually usable window manager._
 
-- _~20 LOC._
+- _~30 LOC._
 - _No modes, no mouse control, no virtual desktops, no menus._
 - _No configs, no eye-candy, not standards-compliant._
 - _Only one full-screen window visible at a time._
 - _Depends only on Xlib._
 
----
+This is the whole thing as seen in `1wm.c`:
 
 ```C
 #include <X11/Xlib.h>
@@ -28,7 +28,11 @@ int main() {
     on(ConfigureRequest, XMoveResizeWindow(d, e.xconfigure.window, 0, 0, e.xconfigure.width, e.xconfigure.height));
           on(MapRequest, XMapWindow(d, e.xmaprequest.window);
                          XSetInputFocus(d, e.xmaprequest.window, 2, 0));
-            on(KeyPress, map("n", XCirculateSubwindowsUp(d, r); XSetInputFocus(d, e.xkey.window, 2, 0))
+            on(KeyPress, map("n", Window rt, pr, *c = 0; unsigned n = 0; \
+                                  XCirculateSubwindowsUp(d, r); \
+                                  XQueryTree(d, r, &rt, &pr, &c, &n); \
+                                  if (n) XSetInputFocus(d, c[n - 1], 2, 0); \
+                                  if (c) XFree(c))
                          map("q", XKillClient(d, e.xkey.subwindow))
                          map("e", system("dmenu_run &")));
   }
@@ -36,9 +40,8 @@ int main() {
 ```
 
 ## Why?
-Because software should be small, hackable and fun,
-not a damn technical debt. You can grasp this one
-in <5 minutes.
+Because software should be small, hackable and fun.
+You can grasp this one in <5 minutes.
 
 ## How?
 The essential things a window manager should let me do are:
